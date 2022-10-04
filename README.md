@@ -7,3 +7,4 @@
 
 dos cuadrículas de 8×8.
 
+2 jugadors
