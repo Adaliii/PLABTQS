@@ -4,12 +4,13 @@ public class Boat {
 	private int length;
 	private boolean[] state;
 	private String position[];
-	private String orientation;
+	private boolean orientation;
 	
-	public Boat(int length) {
+	public Boat(int length, boolean orientation) {
 		this.setLength(length);
 		this.state = new boolean[length];
 		Arrays.fill(state, false);
+		this.orientation = orientation;
 	}
 	
 	public boolean[] getState() {
@@ -32,11 +33,11 @@ public class Boat {
 		this.length = length;
 	}
 
-	public String getOrientation() {
+	public boolean getOrientation() {
 		return orientation;
 	}
 
-	public void setOrientation(String orientation) {
+	public void setOrientation(boolean orientation) {
 		this.orientation = orientation;
 	}
 	
