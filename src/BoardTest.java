@@ -32,5 +32,17 @@ public class BoardTest {
 		assertEquals(board.getDimention(), 3);
 	}
 	
+	@Test
+	public void testVerticalInsertBoat() {
+		Board board = new Board();
+		String lletra = "B1";
+		boolean orientation = false;
+		int length = 3;
+	    board.insertBoat(lletra, orientation, length);
+	    assertEquals(board.getBoard()[1][0], Board.cell.boat);
+	    assertEquals(board.getBoard()[1][1], Board.cell.boat);
+	    assertEquals(board.getBoard()[1][2], Board.cell.boat);
+	}
+	
 
 }
