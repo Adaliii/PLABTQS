@@ -39,9 +39,9 @@ public class BoardTest {
 		boolean orientation = false;
 		int length = 3;
 	    board.insertBoat(lletra, orientation, length);
-	    assertEquals(board.getBoard()[1][0], Board.cell.boat);
-	    assertEquals(board.getBoard()[1][1], Board.cell.boat);
-	    assertEquals(board.getBoard()[1][2], Board.cell.boat);
+	    assertEquals(board.getBoard()[1][0], Board.cell.boat); // B1
+	    assertEquals(board.getBoard()[2][0], Board.cell.boat); // C1
+	    assertEquals(board.getBoard()[3][0], Board.cell.boat); // D1
 	}
 	
 
