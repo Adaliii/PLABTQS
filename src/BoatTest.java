@@ -35,4 +35,14 @@ public class BoatTest {
 		assertEquals(b.getState()[1], false);
 		assertEquals(b.getState()[0], true);
 	}
+	
+	@Test
+	public void testCheckEnfonsat() {
+		Boat b = new Boat(2);
+		String[] s = {"A1", "A2"};
+		b.setPosition(s);
+		b.updateHit("A1");
+		b.updateHit("A2");
+		assertEquals(b.checkEnfonsat(), true);
+	}
 }
