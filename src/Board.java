@@ -35,6 +35,18 @@ public class Board {
 		}
 	}
 	
+	public boolean makeMoveHit(String pos) {
+		int[] intPos = this.convertStringToPosition(pos);
+		if(board[intPos[0]][intPos[1]] == cell.boat) {
+			board[intPos[0]][intPos[1]] = cell.hit;
+			return true;
+		}
+		else if(board[intPos[0]][intPos[1]] == cell.water) {
+			board[intPos[0]][intPos[1]] = cell.miss;
+		}
+		return false;
+	}
+	
 	public static int getDimention() {
 		return dimention;
 	}
