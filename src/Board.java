@@ -19,9 +19,18 @@ public class Board {
 	// Position a boat in board 
 	public void insertBoat(String pos, boolean horizontal, int length ) {
 		int[] intPos = this.convertStringToPosition(pos);
-		if((intPos[0] + length) < dimention) { // if not out of range
-			for(int i =0; i < length; i++) {
-				board[intPos[0]+i][intPos[1]]= cell.boat;
+		if(horizontal) {
+			if((intPos[1] + length) < dimention) { // if not out of range
+				for(int i =0; i < length; i++) {
+					board[intPos[0]][intPos[1]+i]= cell.boat;
+				}
+			}
+		}
+		else { // vertical
+			if((intPos[0] + length) < dimention) { // if not out of range
+				for(int i =0; i < length; i++) {
+					board[intPos[0]+i][intPos[1]]= cell.boat;
+				}
 			}
 		}
 	}
