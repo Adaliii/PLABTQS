@@ -52,5 +52,21 @@ public class BoardTest {
 	    assertEquals(board.getBoard()[1][1], Board.cell.boat); // B2
 	    assertEquals(board.getBoard()[1][2], Board.cell.boat); // B3
 	}
+	
+	@Test
+	public void testMakeMoveMiss() {
+		Board board = new Board();
+		board.insertBoat("B1", true, 3);
+		assertEquals(board.makeMoveHit("A1"), false);
+		assertEquals(board.getBoard()[0][0], Board.cell.miss);
+	}
+	
+	@Test
+	public void testMakeMoveHit() {
+		Board board = new Board();
+		board.insertBoat("B1", false, 3);
+		board.makeMoveHit("B1");
+		assertEquals(board.getBoard()[1][0], Board.cell.hit);
+	}
 
 }
