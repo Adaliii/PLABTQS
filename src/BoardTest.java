@@ -68,5 +68,13 @@ public class BoardTest {
 		board.makeMoveHit("B1");
 		assertEquals(board.getBoard()[1][0], Board.cell.hit);
 	}
+	
+	@Test
+	public void testWinner() {
+		Board board = new Board();
+		board.insertBoat("B1", false, 1);
+		board.makeMoveHit("B1");
+		assertEquals(board.checkWinner(), true);
+	}
 
 }
