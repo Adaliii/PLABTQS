@@ -22,9 +22,7 @@ public class Boat {
 	}
 
 	public void setPosition(String[] position) {
-		for(int i = 0; i < position.length; i++) {
-			this.positions[i] = position[i];
-		}
+		this.positions = position;
 	}
 
 	public int getLength() {
