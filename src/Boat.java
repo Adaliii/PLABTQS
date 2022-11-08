@@ -6,11 +6,11 @@ public class Boat {
 	private String positions[];
 	private boolean orientation;
 	
-	public Boat(int length, boolean orientation) {
-		this.setLength(length);
+	public Boat(int length) {
+		this.length = length;
 		this.state = new boolean[length];
 		Arrays.fill(state, false);
-		this.orientation = orientation;
+		positions = new String [length];
 	}
 	
 	public boolean[] getState() {
@@ -27,18 +27,6 @@ public class Boat {
 
 	public int getLength() {
 		return length;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
-	}
-
-	public boolean getOrientation() {
-		return orientation;
-	}
-
-	public void setOrientation(boolean orientation) {
-		this.orientation = orientation;
 	}
 	
 	public void updateHit(String position) {
