@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Boat {
 	private int length;
 	private boolean[] state;
-	private String position[];
+	private String positions[];
 	private boolean orientation;
 	
 	public Boat(int length, boolean orientation) {
@@ -18,7 +18,7 @@ public class Boat {
 	}
 	
 	public String[] getPosition() {
-		return position;
+		return positions;
 	}
 
 	public void setPosition(String[] position) {
