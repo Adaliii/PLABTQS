@@ -81,7 +81,6 @@ public class BoardTest {
 	public void testNotWinner() {
 		Board board = new Board();
 		board.insertBoat("B1", false, 1);
-		board.makeMoveHit("B1");
 		assertEquals(board.checkWinner(), false);
 	}
 
