@@ -2,18 +2,20 @@ import java.util.Arrays;
 
 
 public class Board {
-	private static int dimention = 10;
+	private static int dimention;
 	private Boat[] boats;
 	private cell board[][];
 	public enum cell{
 		water,boat,hit;		
 	}
 	public Board() {
+		dimention = 8;
 		this.board = new cell[dimention][dimention];
-		for(int i=0;i<10;i++) {
-			Arrays.fill(board[i], cell.water);
+		for(int i=0;i<dimention;i++) {
+			for(int j=0;j<dimention;j++) {
+				board[i][j] = cell.water;
+			}
 		}
-		
 	}
 	
 	// Position a boat in board 
