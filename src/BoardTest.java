@@ -38,11 +38,19 @@ public class BoardTest {
 		String lletra = "B1";
 		boolean orientation = false;
 		int length = 3;
-	    board.insertBoat(lletra, orientation, length);
-	    assertEquals(board.getBoard()[1][0], Board.cell.boat); // B1
-	    assertEquals(board.getBoard()[2][0], Board.cell.boat); // C1
-	    assertEquals(board.getBoard()[3][0], Board.cell.boat); // D1
+	    	board.insertBoat(lletra, orientation, length);
+	    	assertEquals(board.getBoard()[1][0], Board.cell.boat); // B1
+	    	assertEquals(board.getBoard()[2][0], Board.cell.boat); // C1
+	   	 assertEquals(board.getBoard()[3][0], Board.cell.boat); // D1
 	}
 	
+	@Test
+	public void testHorizontalInsertBoat() {
+		Board board = new Board();
+	    board.insertBoat("B1", true, 3); // insert in B1 a lenght 3 horizontal boat
+	    assertEquals(board.getBoard()[1][0], Board.cell.boat); // B1
+	    assertEquals(board.getBoard()[1][1], Board.cell.boat); // B2
+	    assertEquals(board.getBoard()[1][2], Board.cell.boat); // B3
+	}
 
 }
