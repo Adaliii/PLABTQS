@@ -25,13 +25,12 @@ public class BoatTest {
 		assertArrayEquals(b.getPosition(), s);
 	}
 	
+	@Test
 	public void testGetHit() {
-		int length = 5;
-		boolean[] state = new boolean[length];
-		Arrays.fill(state, false);
-		Boat b = new Boat(length);
-		b.getHit(3);
-		assertEquals(b.getState()[3], true);
-		assertEquals(b.getState()[2], false);
+		Boat b = new Boat(3);
+		String[] s = {"A1", "A2", "A3"};
+		b.setPosition(s);
+		b.updateHit("A1");
+		assertEquals(b.getState()[0], true);
 	}
 }
