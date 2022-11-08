@@ -50,15 +50,14 @@ public class Board {
 	}
 	
 	public boolean checkWinner(){
-		boolean winner = true;
 		for(int i=0;i<dimention;i++) {
 			for(int j=0;j<dimention;j++) {
 				if(board[i][j] == cell.boat) {
-					winner = false;
+					return false;
 				}
 			}
 		}
-		return winner;
+		return true;
 	}		
 	
 	public static int getDimention() {
