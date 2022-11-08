@@ -31,6 +31,8 @@ public class BoatTest {
 		String[] s = {"A1", "A2", "A3"};
 		b.setPosition(s);
 		b.updateHit("A1");
+		assertEquals(b.getState()[2], false);
+		assertEquals(b.getState()[1], false);
 		assertEquals(b.getState()[0], true);
 	}
 }
