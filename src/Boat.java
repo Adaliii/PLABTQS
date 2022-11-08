@@ -37,4 +37,13 @@ public class Boat {
 		}
 	}
 	
+	public boolean checkEnfonsat() {
+		for(int i =0; i < this.length; i++) {
+			if(state[i] == false) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }
