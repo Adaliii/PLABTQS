@@ -50,16 +50,16 @@ public class Board {
 	}
 	
 	public boolean checkWinner(){
-		boolean winner = false;
+		boolean winner = true;
 		for(int i=0;i<dimention;i++) {
 			for(int j=0;j<dimention;j++) {
-				if(board[i][j] != cell.boat) {
-					winner = true;
+				if(board[i][j] == cell.boat) {
+					winner = false;
 				}
 			}
 		}
 		return winner;
-	}	
+	}		
 	
 	public static int getDimention() {
 		return dimention;
