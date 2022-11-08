@@ -17,6 +17,14 @@ public class BoatTest {
 		assertArrayEquals(b.getState(), state);
 	}
 	
+	@Test
+	public void testGetSetPositions() {
+		Boat b = new Boat(3);
+		String s [] = {"A1", "A2", "A3"};
+		b.setPosition(s);
+		assertArrayEquals(b.getPosition(), s);
+	}
+	
 	public void testGetHit() {
 		int length = 5;
 		boolean[] state = new boolean[length];
