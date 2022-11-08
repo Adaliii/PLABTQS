@@ -26,18 +26,11 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void testInsertBoat() {
+	public void testGetSetDimention() {
 		Board board = new Board();
-		String lletra = "A1";
-		boolean orientation = false;
-		int length = 3;
-	    board.insertBoat(lletra, orientation, length);
-	    
-	    	
+		board.setDimention(3);
+		assertEquals(board.getDimention(), 3);
 	}
-	
-	
-	
 	
 
 }
