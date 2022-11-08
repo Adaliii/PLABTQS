@@ -41,8 +41,12 @@ public class Boat {
 		this.orientation = orientation;
 	}
 	
-	public void getHit(int position) {
-		state[position] = true;
+	public void updateHit(String position) {
+		for(int i = 0; i < this.length; i++) {
+			if(position == this.positions[i]) {
+				state[i] = true;
+			}
+		}
 	}
 	
 }
