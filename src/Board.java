@@ -49,6 +49,18 @@ public class Board {
 		return false;
 	}
 	
+	public boolean checkWinner(){
+		boolean winner = false;
+		for(int i=0;i<dimention;i++) {
+			for(int j=0;j<dimention;j++) {
+				if(board[i][j] != cell.boat) {
+					winner = true;
+				}
+			}
+		}
+		return winner;
+	}	
+	
 	public static int getDimention() {
 		return dimention;
 	}
