@@ -119,6 +119,9 @@ public class BoardTest {
 		assertEquals(board.getBoard()[5][7], Board.cell.boat); // H6
 		assertEquals(board.getBoard()[6][7], Board.cell.boat); // H7
 		assertEquals(board.getBoard()[7][7], Board.cell.boat); // H8
+		
+		viewBoard sb = new viewBoard();
+		sb.showBoardToPlayer(board);
 	}
 	
 	@Test
@@ -126,6 +129,8 @@ public class BoardTest {
 		Board board = new Board();
 		board.insertBoat("B1", true, 3);
 		assertEquals(board.makeMoveHit("A1"), false);
+		viewBoard sb = new viewBoard();
+		sb.showBoardToEnemy(board);
 		assertEquals(board.getBoard()[0][0], Board.cell.miss);
 	}
 	
@@ -134,6 +139,8 @@ public class BoardTest {
 		Board board = new Board();
 		board.insertBoat("B1", false, 3);
 		board.makeMoveHit("B1");
+		viewBoard sb = new viewBoard();
+		sb.showBoardToEnemy(board);
 		assertEquals(board.getBoard()[0][1], Board.cell.hit);
 	}
 	 
