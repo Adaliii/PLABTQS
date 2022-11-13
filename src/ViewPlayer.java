@@ -8,7 +8,7 @@ public class ViewPlayer {
 		String name = nameScanner.nextLine();
 		return name; 
 	}
-	
+	 
 	public void showNameError() {
 		System.out.println("Nom introduit incorrecte");
 	}

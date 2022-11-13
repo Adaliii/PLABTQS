@@ -1,6 +1,5 @@
 
 
-
 public class Board {
 	public ViewBoard viewBoard = new ViewBoard();
 	private int dimention;
@@ -26,7 +25,7 @@ public class Board {
  		Boat b2 = new Boat(3);
 		boats[2] = b2; 
 		setBoats(boats);
-	}
+	} 
 	
 	// buildBoat and insertBoat methods are separated for easier testing
 	// Gets input from the player 

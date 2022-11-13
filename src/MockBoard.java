@@ -4,7 +4,7 @@ public class MockBoard extends Board {
 	@Override
 	public int makeMoveHit(String position) {
 		this.pos = position;
-		if(position.equals("3A")) {
+		if(position.equals("A3")) {
 			return 0;
 		}
 		else {
@@ -14,7 +14,7 @@ public class MockBoard extends Board {
 	
 	@Override
 	public boolean checkWinner() {
-		if(pos.equals("3A")) {
+		if(pos.equals("A3")) {
 			return true;
 		}
 		else {

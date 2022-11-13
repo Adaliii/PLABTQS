@@ -15,7 +15,7 @@ public class BoatTest {
 		Boat b = new Boat(length);
 		assertEquals(b.getLength(), 5, 0);
 		assertArrayEquals(b.getState(), state);
-	}
+	} 
 	
 	@Test
 	public void testGetSetPositions() {
@@ -43,6 +43,12 @@ public class BoatTest {
 		b.setPosition(s);
 		b.updateHit("A1");
 		b.updateHit("A2");
-		assertEquals(b.checkEnfonsat(), true);
+		assertTrue(b.checkEnfonsat());
+		
+		Boat b1 = new Boat(2);
+		String[] s1 = {"A1", "A2"};
+		b1.setPosition(s1);
+		b1.updateHit("A1");
+		assertFalse(b1.checkEnfonsat());
 	}
 }

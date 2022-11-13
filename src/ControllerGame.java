@@ -2,7 +2,7 @@ import java.io.IOException;
 
 public class ControllerGame {
 	
-	private Player players[] = new Player[2];
+	public Player players[] = new Player[2];
 	private boolean winner;
 	public ViewPlayer viewPlayer = new ViewPlayer();
 	public ViewDatabase viewDB = new ViewDatabase();
@@ -10,7 +10,7 @@ public class ControllerGame {
 	public ViewBoard viewBoard = new ViewBoard();
 	 
 	//Creates players
-	public void setUpGame() {
+	public void setUpPlayers() {
 		int i = 0;
 		for(Player p: players) {
 			boolean validName = false;
@@ -20,20 +20,22 @@ public class ControllerGame {
 					validName = true;
 					players[i] = new Player(name, new Board());
 					i++;
-				}
+				} 
 				else {
 					viewPlayer.showNameError();
 				}
 			}
 		}
+	}
+	public void setUpBoards() {
 		for (Player p: players) {
 			p.getBoard().buildBoard();
 			viewBoard.showBoardToPlayer(p.getBoard());
 		}
 	}
-	
 	//main flow of the game
 	public Player makeGame() throws IOException {
+		setUpBoards();
 		Player actualPlayer = players[0];
 		int nextPlayer = 0;
 		while(!winner) {

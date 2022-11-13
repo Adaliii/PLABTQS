@@ -10,24 +10,33 @@ public class ControllerGameTest {
 	public void testMakeGameWithMock() throws IOException {
 		ControllerGame game = new ControllerGame();
 		Player players[] = new Player[2];
-		players[0] = new Player("Winner", new MockBoard());
+		game.players[0] = new Player("Winner", new MockBoard());
 		Player enemy = new Player("Enemy",new MockBoard());
-		players[1] = enemy;
+		game.players[1] = enemy;
 		
 		
 		 
-		//Flux del joc: Winner ataca a 3A i guanya automaticament
+		//Flux del joc: Winner ataca a A3 i guanya automaticament
 		Player winner = game.makeGame();
 		assertEquals(winner.getName(), "Winner");
 		
 		//Flux del joc: Winner ataca a 6B, falla, Enemy ataca a 3A, guanya
 		ControllerGame game2 = new ControllerGame();
-		players[0] = new Player("Winner", new MockBoard());
-		players[1] = new Player("Enemy", new MockBoard());
+		game2.players[0] = new Player("Winner", new MockBoard());
+		game2.players[1] = new Player("Enemy", new MockBoard());
 		
 		
 		Player winner2 = game2.makeGame();
 		assertEquals(winner2.getName(), "Enemy");
+	}
+	
+	@Test
+	public void gameSetUpTest() {
+		ControllerGame game = new ControllerGame();
+		game.viewPlayer = new MockViewPlayer();
+		game.setUpPlayers();
+		assertEquals(game.players[0].getName(), "Juan");
+		
 	}
 
 }
