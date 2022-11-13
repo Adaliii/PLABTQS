@@ -37,6 +37,36 @@ public class ViewBoard{
 			System.out.println(); //Makes a new row
 		}
 	}
-	
+	public String askPositionBoat(int boatLength) {
+		Scanner scan = new Scanner(System.in);
+		String position = "";
+		System.out.println("For size " + boatLength + " boat: ");
+		System.out.println("In what position do you want to put it? (A-H)+(1-8)");
+		position = scan.nextLine();
+		return position;
+	}
+
+	public void showErrorPosition(String position) {
+		System.out.println("Position " + position + " is not a valid coordinate");
+		return;		
+	}
+
+	public String askOrientation() {
+		Scanner scan = new Scanner(System.in);
+		String orientation = "";
+		System.out.println("In horitzontal or vertical orientation? (H/V)");
+		orientation = scan.nextLine();
+		return orientation;
+	}
+
+	public void showErrorOrientation(String orientation) {
+		System.out.println("Orientation " + orientation + " is not a valid orientation");
+		return;		
+	}
+
+	public void showBoatError() {
+		System.out.println("Boat could not be inserted, try again");
+		return;
+	}
 	
 }
