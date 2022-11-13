@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class viewBoard{
+public class ViewBoard{
 	
 	public void showBoardToPlayer(Board board) {
 		System.out.println( "	A	B	C	D	E	F	G	H");
