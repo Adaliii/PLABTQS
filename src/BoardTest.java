@@ -7,24 +7,22 @@ import org.junit.Test;
 
 
 public class BoardTest {
-	
 	@Test
-	public void testBoard() {
-		Board board = new Board();
-		for(int i = 0; i<10;i++) {
-			for(int j=0;j<10;j++) {
-				assertEquals(board.getBoard()[i][j], Board.cell.water);
-			}
-		}
-	}
-	
+    public void testBoard() {
+        Board board = new Board();
+        for(int i = 0; i<8;i++) {
+            for(int j=0;j<8;j++) {
+                assertTrue(board.getBoard()[i][j].equals(Board.cell.water));
+            }
+        }
+    }
 	
 	@Test
 	public void testConvertLetter() {
 		Board board = new Board();
 		String lletra = "B1";
 		int[] pos = new int[2];
-		pos[0]=1; // leter
+		pos[0]=1; // letter
 		pos[1]=0; // number
 		assertArrayEquals(board.convertStringToPosition(lletra), pos);
 	}
@@ -51,7 +49,7 @@ public class BoardTest {
 	@Test
 	public void testHorizontalInsertBoat() {
 		Board board = new Board();
-	    board.insertBoat("B1", true, 3); // insert in B1 a lenght 3 horizontal boat
+	    board.insertBoat("B1", true, 3); // insert in B1 a length 3 horizontal boat
 	    assertEquals(board.getBoard()[0][1], Board.cell.boat); // B1
 	    assertEquals(board.getBoard()[0][2], Board.cell.boat); // C1
 	    assertEquals(board.getBoard()[0][3], Board.cell.boat); // D1
@@ -124,11 +122,13 @@ public class BoardTest {
 		sb.showBoardToPlayer(board);
 	}
 	
+	
 	@Test
 	public void testMakeMoveMiss() {
 		Board board = new Board();
 		board.insertBoat("B1", true, 3);
-		assertEquals(board.makeMoveHit("A1"), false);
+		assertEquals(board.makeMoveHit("A1"), 1);
+		assertEquals(board.makeMoveHit("A1"), 3); // already miss
 		ViewBoard sb = new ViewBoard();
 		sb.showBoardToEnemy(board);
 		assertEquals(board.getBoard()[0][0], Board.cell.miss);
@@ -138,7 +138,8 @@ public class BoardTest {
 	public void testMakeMoveHit() {
 		Board board = new Board();
 		board.insertBoat("B1", false, 3);
-		board.makeMoveHit("B1");
+		assertEquals(board.makeMoveHit("B1"), 0);
+		assertEquals(board.makeMoveHit("B1"), 2); // already hit
 		ViewBoard sb = new ViewBoard();
 		sb.showBoardToEnemy(board);
 		assertEquals(board.getBoard()[0][1], Board.cell.hit);
