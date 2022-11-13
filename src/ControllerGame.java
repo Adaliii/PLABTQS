@@ -6,20 +6,9 @@ public class ControllerGame {
 	private boolean winner;
 	public ViewPlayer viewPlayer = new ViewPlayer();
 	public ViewDatabase viewDB = new ViewDatabase();
-	ModelDatabase DB = new ModelDatabase();
-	public Player[] getPlayers() {
-		return players;
-	}
-	public void setPlayers(Player[] player) {
-		this.players = player;
-	}
-	public boolean getWinner() {
-		return winner;
-	}
-	public void setWinner(boolean winner) {
-		this.winner = winner;
-	}
-	
+	public ModelDatabase DB = new ModelDatabase("./Ranking.txt");
+	public ViewBoard viewBoard = new ViewBoard();
+	 
 	//Creates players
 	public void setUpGame() {
 		int i = 0;
@@ -36,6 +25,10 @@ public class ControllerGame {
 					viewPlayer.showNameError();
 				}
 			}
+		}
+		for (Player p: players) {
+			p.getBoard().buildBoard();
+			viewBoard.showBoardToPlayer(p.getBoard());
 		}
 	}
 	
@@ -55,7 +48,6 @@ public class ControllerGame {
 				if(move == 4 || move == 0) {
 					validMove = true;
 				}
-				System.out.println(move);
 			}
 			
 			/*
@@ -73,5 +65,6 @@ public class ControllerGame {
 		DB.connect();
 		DB.modifyRanking(p);
 		viewDB.showRanking(DB.getRanking());
+		DB.disconnect();
 	}
 }

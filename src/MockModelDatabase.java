@@ -2,6 +2,10 @@ import java.io.IOException;
 import java.util.TreeMap;
 
 public class MockModelDatabase extends ModelDatabase {
+	public MockModelDatabase(String fileName) {
+		super(fileName);
+	}
+
 	public String name = null;
 	@Override 
 	public boolean connect() throws IOException {
@@ -13,7 +17,7 @@ public class MockModelDatabase extends ModelDatabase {
 		name = p.getName();
 		return true;
 	}
-	
+	 
 	@Override
 	public TreeMap<String, Integer> getRanking(){
 		TreeMap<String, Integer> mockRank = new TreeMap<String, Integer>();

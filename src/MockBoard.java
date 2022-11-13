@@ -2,13 +2,13 @@
 public class MockBoard extends Board {
 	public String pos;
 	@Override
-	public boolean makeMoveHit(String position) {
+	public int makeMoveHit(String position) {
 		this.pos = position;
 		if(position.equals("3A")) {
-			return true;
+			return 0;
 		}
 		else {
-			return false;
+			return 1;
 		}
 	}
 	

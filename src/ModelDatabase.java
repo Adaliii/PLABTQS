@@ -1,4 +1,4 @@
-import java.io.File;
+import java.io.File; 
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,9 +18,6 @@ public class ModelDatabase {
 	private String fileName = "./Ranking.txt";
 	public TreeMap<String, Integer> ranking = new TreeMap<String,Integer>();
 	
-	public ModelDatabase() {
-		//takes default values
-	}
 	
 	public ModelDatabase(String fileName){
 		this.fileName = fileName;
@@ -31,7 +28,7 @@ public class ModelDatabase {
 	}
 	
 	//Sorts entries of a Map by value instead of by key (from minor to major)
-	static <K,V extends Comparable<? super V>>
+	public static <K,V extends Comparable<? super V>>
 	SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
 	    SortedSet<Map.Entry<K,V>> sortedEntries = new TreeSet<Map.Entry<K,V>>(
 	        new Comparator<Map.Entry<K,V>>() {
@@ -62,7 +59,7 @@ public class ModelDatabase {
         	file.createNewFile();
         }
 		
-		
+		 
 		return true;
 	}
 	
@@ -89,7 +86,6 @@ public class ModelDatabase {
 		
 		SortedSet<Entry<String, Integer>> entries = entriesSortedByValues(ranking);
 		ranking.clear();
-		
 		for (Entry<String, Integer> entry : entries) {
 			ranking.put( entry.getKey(), entry.getValue());
 			content = content + entry.getKey() + "\t" + entry.getValue() + "\n";

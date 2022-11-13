@@ -10,7 +10,7 @@ public class ModelDatabaseTest {
 	@Test
 	public void testConnect() throws IOException {
 		//Reads file data
-		ModelDatabase DB = new ModelDatabase();
+		ModelDatabase DB = new ModelDatabase("./TestRanking.txt");
 		assertTrue(DB.connect());
 		
 		
@@ -21,7 +21,7 @@ public class ModelDatabaseTest {
 		assertTrue(DB2.connect());
 		
 	}
-	
+	  
 	@Test 
 	public void testModifyRanking() throws IOException {
 		Player winner = new Player("Juan", new Board());

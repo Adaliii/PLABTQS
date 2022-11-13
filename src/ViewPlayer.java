@@ -6,15 +6,16 @@ public class ViewPlayer {
 		Scanner nameScanner = new Scanner(System.in);
 		System.out.println("Introdueix el teu nom");
 		String name = nameScanner.nextLine();
-		return name;
+		return name; 
 	}
 	
 	public void showNameError() {
 		System.out.println("Nom introduit incorrecte");
 	}
+	
 	public String askAttack() {
 		Scanner move = new Scanner(System.in);
-		System.out.println("Introdueix on vols atacar \n");
+		System.out.println("Introdueix on vols atacar");
 		String atac = move.nextLine();
 		return atac;
 	}
@@ -33,7 +34,10 @@ public class ViewPlayer {
 		case 3:
 			System.out.println("Fila Incorrecte");
 			return;
-		case 4:
+		case 5:
+			System.out.println("Posicio ja atacada");
+			return;
+		default:
 			System.out.println("Vaixell tocat!");
 			return;	
 		}

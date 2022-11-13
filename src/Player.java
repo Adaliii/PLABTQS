@@ -4,11 +4,6 @@ import java.util.regex.Pattern;
 public class Player {
 	String name;
 	Board board;
-	public Player() {
-		name = "";
-		board = new Board();
-	}
-	
 	public Player(String name, Board board) {
 		this.name = name;
 		this.board = board;
@@ -17,23 +12,19 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public Board getBoard() {
 		return board;
 	}
-	public void setBoard(Board board) {
-		this.board = board; 
-	}
+	
 	
 	public int makeMove(Player p, String atac) {
 		if(atac.length() != 2) {
 			return 1;
-		}
+		} 
 		else {
-			String columna = Character.toString(atac.charAt(1));
-			String fila = Character.toString(atac.charAt(0));
+			String columna = Character.toString(atac.charAt(0));
+			String fila = Character.toString(atac.charAt(1));
 			if(!columna.matches("^[A-H]$")) {
 				return 2;
 			}
@@ -41,11 +32,15 @@ public class Player {
 				return 3;
 			}
 			else {
-				if(p.board.makeMoveHit(atac)) {
+				int movehit = p.board.makeMoveHit(atac);
+				if(movehit == 0) {
 					return 4;
 				}
-				else {
+				else if(movehit == 1){
 					return 0;
+				}
+				else {
+					return 5;
 				}
 				
 			}
