@@ -125,6 +125,84 @@ public class BoardTest {
 	}
 	
 	
+	
+	@Test
+	public void testBuildBoardInvalidPosHorizontal() {
+		
+		Boat[] boats = new Boat[1];
+		Boat b0 = new Boat(2);
+		boats[0] = b0; // position = A2 H
+		Board board = new Board();
+		board.setBoats(boats);
+		MockViewBoard mBoard = new MockViewBoard();
+		mBoard.numTest=1;
+		board.viewBoard = mBoard;
+		board.buildBoard();
+		assertEquals(board.getBoard()[1][0], Board.cell.boat); // A2
+		assertEquals(board.getBoard()[1][1], Board.cell.boat); // B2
+		
+		ViewBoard sb = new ViewBoard();
+		sb.showBoardToPlayer(board);
+	}
+	
+	@Test
+	public void testBuildBoardInvalidOrientationVertical() { // ha de passar per error de orientacio pero no pasa???
+		
+		Boat[] boats = new Boat[1];
+		Boat b0 = new Boat(2);
+		boats[0] = b0; // position = A2 H
+		Board board = new Board();
+		board.setBoats(boats);
+		MockViewBoard mBoard = new MockViewBoard();
+		mBoard.numTest=2;
+		board.viewBoard = mBoard;
+		board.buildBoard();
+		assertEquals(board.getBoard()[1][0], Board.cell.boat); // A2
+		assertEquals(board.getBoard()[2][0], Board.cell.boat); // A3
+		
+		ViewBoard sb = new ViewBoard();
+		sb.showBoardToPlayer(board);
+	}
+	
+	
+	@Test
+	public void testBuildBoardInvalidBoatVertical() {
+		
+		Boat[] boats = new Boat[1];
+		Boat b0 = new Boat(2);
+		boats[0] = b0; // position = H8 V and later H7 V
+		Board board = new Board();
+		board.setBoats(boats);
+		MockViewBoard mBoard = new MockViewBoard();
+		mBoard.numTest=3;
+		board.viewBoard = mBoard;
+		board.buildBoard();
+		assertEquals(board.getBoard()[6][7], Board.cell.boat); // H7
+		assertEquals(board.getBoard()[7][7], Board.cell.boat); // H8
+		
+		ViewBoard sb = new ViewBoard();
+		sb.showBoardToPlayer(board);
+	}
+
+	@Test
+	public void testBuildBoardInvalidBoatHorizontal() {
+		
+		Boat[] boats = new Boat[1];
+		Boat b0 = new Boat(2);
+		boats[0] = b0; // position = H8 H and later G8 H
+		Board board = new Board();
+		board.setBoats(boats);
+		MockViewBoard mBoard = new MockViewBoard();
+		mBoard.numTest=4;
+		board.viewBoard = mBoard;
+		board.buildBoard();
+		assertEquals(board.getBoard()[7][6], Board.cell.boat); // G8
+		assertEquals(board.getBoard()[7][7], Board.cell.boat); // H8
+		
+		ViewBoard sb = new ViewBoard();
+		sb.showBoardToPlayer(board);
+	}
+	
 	@Test
 	public void testMakeMoveMiss() {
 		Board board = new Board();
