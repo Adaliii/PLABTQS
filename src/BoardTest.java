@@ -105,6 +105,8 @@ public class BoardTest {
 		boats[2] = b2; // position H6 V
 		Board board = new Board();
 		board.setBoats(boats);
+		MockViewBoard mBoard = new MockViewBoard();
+		board.viewBoard = mBoard;
 		board.buildBoard();
 		assertEquals(board.getBoard()[1][0], Board.cell.boat); // A2
 		assertEquals(board.getBoard()[1][1], Board.cell.boat); // B2
