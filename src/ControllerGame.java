@@ -42,7 +42,7 @@ public class ControllerGame {
 			
 			boolean validMove = false;
 			while(!validMove) {
-				
+				viewBoard.showBoardToEnemy(players[nextPlayer].getBoard());
 				int move = actualPlayer.makeMove(players[nextPlayer], viewPlayer.askAttack());
 				viewPlayer.showResultAttack(move);
 				if(move == 4 || move == 0) {
