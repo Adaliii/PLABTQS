@@ -1,4 +1,6 @@
-
+/**
+ * La classe MockBoard ajuda a altres classes a fer tests retornant les dades esperades.
+ */
 public class MockBoard extends Board {
 	public String pos;
 	int i = 0;
