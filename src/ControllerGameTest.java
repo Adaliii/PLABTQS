@@ -6,8 +6,12 @@ import org.junit.Test;
 
 public class ControllerGameTest {
 	
+	// Test que fa el joc en complet.
+	// Fa proves de caixa negra on es comprova:
+	//	- Partició Equivalent.
+	// Realitza les proves de caixa blanca:
+	// 	- Statement coverage.
 	@Test
-	
 	public void testMakeGame() throws IOException {
 		ControllerGame game = new ControllerGame();
 		Player players[] = new Player[2];
@@ -17,11 +21,11 @@ public class ControllerGameTest {
 		game.viewPlayer = new MockViewPlayer();
 		
 		 
-		//Flux del joc: Winner ataca a A3 i guanya automaticament
+		// Flux del joc: Winner ataca a A3 i guanya automaticament
 		Player winner = game.makeGame();
 		assertEquals(winner.getName(), "Winner");
 		
-		//Flux del joc: Winner ataca a 6B, falla, Enemy ataca a 3A, guanya
+		// Flux del joc: Winner ataca a 6B, falla, Enemy ataca a 3A, guanya
 		ControllerGame game2 = new ControllerGame();
 		game2.players[0] = new Player("Winner", new MockBoard());
 		game2.players[1] = new Player("Enemy", new MockBoard());
@@ -30,6 +34,10 @@ public class ControllerGameTest {
 		Player winner2 = game2.makeGame();
 		assertEquals(winner2.getName(), "Enemy");
 	}
+	
+	// Test que simula emmagatzemar les dades a la base de dades del ranking al acabar un joc.
+	// Realitza les proves de caixa blanca:
+	// 	- Statement coverage, decision coverage, condition coverage.
 	@Test
 	public void testMakeGameMockedRanking() throws IOException {
 		ControllerGame game = new ControllerGame();
@@ -44,6 +52,10 @@ public class ControllerGameTest {
 		Player winner = game.makeGame();
 		assertEquals(winner.getName(), "Winner");
 	}
+	
+	// Test que comprova la inserció de noms pels jugadors de la partida.
+	// Realitza les proves de caixa blanca:
+	// 	- Statement coverage.
 	@Test
 	public void gameSetUpTest() {
 		ControllerGame game = new ControllerGame();
