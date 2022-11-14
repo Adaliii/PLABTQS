@@ -33,6 +33,13 @@ public class PlayerTest {
 		
 		assertEquals(p.makeMove(p2, "B6"), 0);
 		gameControl.viewPlayer.showResultAttack(p.makeMove(p2, "B6"));
+		
+		//Introduir coordenada ja atacada
+		assertEquals(p.makeMove(p2, "B6"), 5);
+		gameControl.viewPlayer.showResultAttack(p.makeMove(p2, "B6"));
+		
+		assertEquals(p.makeMove(p2, "C3"), 0);
+		gameControl.viewPlayer.showResultAttack(p.makeMove(p2, "B6"));
 	}
 
 }

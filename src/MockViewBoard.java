@@ -32,10 +32,8 @@ public class MockViewBoard extends ViewBoard {
 		}
 		else if(numTest == 2){
 			switch(i) {
-			   case 0:
-				   i++;
-				   return "A2";
 			   default:
+				   i++;
 				   return "A2";
 			}
 		}
@@ -66,52 +64,34 @@ public class MockViewBoard extends ViewBoard {
 			case 0:
 				i++;
 			   return "H";
+			case 1:
+				i++;
+				return "GG";
+			case 2:
+				i++;
+				return "G";
 		   default:
 			   i++;
 			   return "V";
 		   }
 		}
 		else if(numTest == 1) {
-			switch(i) {
-			   case 0:
-				   i++;
-				   return "H";
-			   case 1:
-				   i++;
-				   return "H";
-			   case 2:
-				   i++;
-				   return "H";
-			   default:
-				   return "H";
-			}
+			i++;
+			return "H";
 		}
 		else if(numTest == 2){
-			switch(i) {
-			   case 0:
-				   i++;
-				   return " ertical ";
-			   default:
-				   return "V";
-			}
+			i++;
+			return "V";
+			
 		}
 		else if(numTest == 3){
-			switch(i) {
-			   case 0:
-				   i++;
+					i++;
 				   return "V";
-			   default:
-				   return "V";
-			}
+			
 		}
 		else {
-			switch(i) {
-			   case 0:
-				   i++;
-				   return "H";
-			   default:
-				   return "H";
-			}
+			i++;
+			return "H";
 		}
 		
 		   

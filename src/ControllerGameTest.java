@@ -5,8 +5,9 @@ import java.io.IOException;
 import org.junit.Test;
 
 public class ControllerGameTest {
- 
+	
 	@Test
+	
 	public void testMakeGameWithMock() throws IOException {
 		ControllerGame game = new ControllerGame();
 		Player players[] = new Player[2];
@@ -36,7 +37,13 @@ public class ControllerGameTest {
 		game.viewPlayer = new MockViewPlayer();
 		game.setUpPlayers();
 		assertEquals(game.players[0].getName(), "Juan");
+		assertEquals(game.players[1].getName(), "Alfonso");
+		
+		game.setUpPlayers();
+		assertEquals(game.players[0].getName(), "Hola");
+		assertEquals(game.players[1].getName(), "Hola");
 		
 	}
+	
 
 }

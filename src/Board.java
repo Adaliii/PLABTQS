@@ -130,7 +130,7 @@ public class Board {
 		else { // vertical
 			if((intPos[1] + length) <= dimention) { // if not out of range num
 				for(int i =0; i < length; i++) {
-					if(board[intPos[1]+i][intPos[0]] == cell.boat) {
+					if(board[intPos[1]+i][intPos[0]].equals(cell.boat)) {
 						return false;
 					}
 					else {
@@ -157,15 +157,11 @@ public class Board {
 		else if(board[intPos[1]][intPos[0]] == cell.miss) {
 			return 3;
 		}
-		else if(board[intPos[1]][intPos[0]] == cell.water) {
+		else {
 			board[intPos[1]][intPos[0]] = cell.miss;
+			return 1;
 		}
-		return 1;
-	}
-	
-	public boolean checkMoveEnfonsat(String pos) {
 		
-		return false;
 	}
 	
 	public boolean checkWinner(){
@@ -187,9 +183,6 @@ public class Board {
 		this.dimention = dimention;
 	}
 	
-	public Boat[] getBoats() {
-		return boats;
-	}
 	
 	public void setBoats(Boat[] boats) {
 		this.boats = boats;
@@ -199,9 +192,6 @@ public class Board {
 		return board;
 	}
 	
-	public void setBoard(cell board[][]) {
-		this.board = board;
-	}
 	
 	public int[] convertStringToPosition(String casella) {
 		int[] posicio = new int[2];

@@ -6,10 +6,17 @@ public class MockViewPlayer extends ViewPlayer {
 	public String askName() {
 		switch(i) {
 		case 0:
+			i++;
 			return "Juan";
 		
-		default:
+		case 1:
+			i++;
 			return "Alfonso";
+		case 2:
+			i++;
+			return "1234";
+		default:
+			return "Hola";
 		}
 	}
 }
