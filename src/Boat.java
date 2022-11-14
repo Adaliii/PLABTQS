@@ -1,10 +1,12 @@
 import java.util.Arrays;
 
+/**
+ * La classe Boat emmagatzema el sbarcos utilitzats per el joc.
+ */
 public class Boat {
 	private int length;
-	private boolean[] state;
-	private String positions[];
-	private boolean orientation;
+	private boolean[] state; // estat en que es troben les diferents posicions del barco 
+	private String positions[]; // posicions en la que es troba el barco en el tauler
 	
 	public Boat(int length) {
 		this.length = length;
