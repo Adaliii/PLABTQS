@@ -3,12 +3,17 @@ import java.util.Scanner;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-/*
+
+/**
+ * La classe Game es on es troba el main, des d'on comença tot el joc.
+ */
 public class Game {
 	public ControllerGame controlGame = new ControllerGame();
 	
 	
-	//No forma part dels tests
+	/**
+   	* Main on es criden els metodes necessaris per executar el joc.
+ 	*/
 	public void main() throws IOException {
 		boolean continuePlaying = true;
 		
@@ -27,4 +32,4 @@ public class Game {
 		
 	}
 }
-*/
+
