@@ -4,6 +4,11 @@ import org.junit.Test;
 
 public class PlayerTest {
 
+	// Test que comprova que els moviments dels jugadors són correctes.
+	// Fa les proves de caixa negra:
+	//	- Partició Equivalent, valors límits
+	// Fa les proves de caixa blanca:
+	// 	- Statement coverage, decision coverage, condition coverage.
 	@Test
 	public void testMakeMoveMocked() {
 		Player p = new Player("Juan", new MockBoard());
