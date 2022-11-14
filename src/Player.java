@@ -1,9 +1,14 @@
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+/**
+ * La classe Player determina les accions de un jugador en el seu tauler.
+ */
 public class Player {
 	String name;
 	Board board;
+	
 	public Player(String name, Board board) {
 		this.name = name;
 		this.board = board;
@@ -17,7 +22,12 @@ public class Player {
 		return board;
 	}
 	
-	
+	/**
+ 	* Permet fer un moviment al jugador en el tauler del enemic.
+	*
+	* @param  p	jugador al que li fa el moviment
+	* @param  atac	posició on ataca el jugador
+ 	*/
 	public int makeMove(Player p, String atac) {
 		if(atac.length() != 2) {
 			return 1;
