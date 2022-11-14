@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-
+/*
 public class Game {
 	public ControllerGame controlGame = new ControllerGame();
 	
@@ -27,3 +27,4 @@ public class Game {
 		
 	}
 }
+*/

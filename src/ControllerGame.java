@@ -51,10 +51,6 @@ public class ControllerGame {
 					validMove = true;
 				}
 			}
-			
-			/*
-			 * Cridar a vista que mostra el tauler 
-			 */
 			winner = players[nextPlayer].getBoard().checkWinner();
 		}
 		
