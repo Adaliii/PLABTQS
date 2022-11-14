@@ -1,14 +1,17 @@
-
-
+/**
+ * La classe Board crea el tauler base per jugar i té els mètodes suficients per modificar-la
+ */
 public class Board {
 	public ViewBoard viewBoard = new ViewBoard();
-	private int dimention;
+	private int dimention; // dimensió del tauler = dimentin*dimention
 	private Boat[] boats;
-	private cell board[][]; // [row][column] == [number][letter] == position "3A"
+	private cell board[][]; // [row][column] == [number][letter]
 	public enum cell{
 		water,boat,hit,miss;		
 	}
 	
+	// Constructor: Inicialitza el tauler amb totes les cel·les d'aigua.
+	//		Afegeix les dades dels barcos que s'hauran de col·locar.
 	public Board() {
 		dimention = 8;
 		this.board = new cell[dimention][dimention];
@@ -27,8 +30,10 @@ public class Board {
 		setBoats(boats);
 	} 
 	
-	// buildBoat and insertBoat methods are separated for easier testing
-	// Gets input from the player 
+	// buildBoat i insertBoat estan separats per facilitar el testing
+	/**
+   	* Serveix per processar els inputs del jugador per posicionar els seus barcos
+ 	*/
 	public void buildBoard() {      
 		for(int i=0; i < boats.length; i++) {
 			String position = "";
@@ -91,34 +96,28 @@ public class Board {
 						
 				}
 			}
-			/*
-			String[] str = new String [2];
-			System.out.println("For size " + boats[i].getLength() + " boat: ");
-			System.out.println("In what position do you want to put it? (A-H)+(1-8)");
-			str[0] = scan.nextLine();
-			System.out.println("In horitzontal or vertical orientation? (H/V)");
-			str[1] = scan.nextLine();  
-			if(str[1].equals("H")) {
-				this.insertBoat(str[0], true, boats[i].getLength());
-			}
-			else {
-				this.insertBoat(str[0], false, boats[i].getLength());
-			}
-			*/
 		}
 	}
 	
-	// Position a boat in board and returns false if position invalid (out of range) 
+	/**
+   	* Serveix insertar un barco en la posicio i horientació desitjada.
+	* Mira si no es surt dels limits del tauler.
+	*
+	* @param  pos		posicio on col·locar el barco
+	* @param  horitzontal	orientació del barco
+	* @param  length	tamany del barco
+ 	* @return         true si s'ha inserit correctament el barco
+ 	*/
 	public boolean insertBoat(String pos, boolean horizontal, int length ) {
 		int[] intPos = this.convertStringToPosition(pos);
 		if(horizontal) {
-			if((intPos[0] + length) <= dimention) { // if not out of range letter
+			if((intPos[0] + length) <= dimention) { // no esta fora dels limits de les columnes
 				for(int i =0; i < length; i++) {
 					if(board[intPos[1]][intPos[0]+i] == cell.boat) {
 						return false;
 					}
 					else {
-						board[intPos[1]][intPos[0]+i]= cell.boat; // advance letter
+						board[intPos[1]][intPos[0]+i]= cell.boat; // Avança col·locacio per les columnes
 					}
 				}
 				return true;
@@ -128,13 +127,13 @@ public class Board {
 			}
 		}
 		else { // vertical
-			if((intPos[1] + length) <= dimention) { // if not out of range num
+			if((intPos[1] + length) <= dimention) { // no esta fora dels limits de les files
 				for(int i =0; i < length; i++) {
 					if(board[intPos[1]+i][intPos[0]].equals(cell.boat)) {
 						return false;
 					}
 					else {
-						board[intPos[1]+i][intPos[0]]= cell.boat; // advance numA
+						board[intPos[1]+i][intPos[0]]= cell.boat; // Avança col·locacio per les files
 					}
 				}
 				return true;
@@ -145,6 +144,15 @@ public class Board {
 		}
 	}
 	
+	/**
+   	* Processa el moviment/dispar del jugador en el tauler.
+	*
+	* @param  pos	posicio on dispara el jugador
+ 	* @return       0 si li dona a un barco (hit)
+			1 si falla en una posició ja fallada
+			2 si li dona a un barco que ja li havia donat
+			3 si falla a donarli a un barco (miss)
+ 	*/
 	public int makeMoveHit(String pos) {
 		int[] intPos = this.convertStringToPosition(pos);
 		if(board[intPos[1]][intPos[0]] == cell.boat) {
@@ -164,6 +172,11 @@ public class Board {
 		
 	}
 	
+	/**
+   	* Recorre el tauler, si no queda cap barco en peu, ha guanyat.
+	*
+ 	* @return       si ha guanyat
+ 	*/
 	public boolean checkWinner(){
 		for(int i=0;i<dimention;i++) {
 			for(int j=0;j<dimention;j++) {
@@ -192,7 +205,12 @@ public class Board {
 		return board;
 	}
 	
-	
+	/**
+   	* Converteix una posició String ("A1") en un array de posicions int ("00") per a igualar les posicions del tauler.
+	*
+	* @param  casella	input que volem convertir
+ 	* @return       
+ 	*/
 	public int[] convertStringToPosition(String casella) {
 		int[] posicio = new int[2];
 		
