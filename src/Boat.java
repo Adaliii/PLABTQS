@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * La classe Boat emmagatzema el sbarcos utilitzats per el joc.
  */
@@ -11,7 +9,9 @@ public class Boat {
 	public Boat(int length) {
 		this.length = length;
 		this.state = new boolean[length];
-		Arrays.fill(state, false);
+		for(int i =0; i < length; i++) {
+			state[i] = false;
+		}
 		positions = new String [length];
 	}
 	
