@@ -76,15 +76,16 @@ public class BoardTest {
 	    	assertEquals(board7.insertBoat("H7", false, 3), false);
 	}
 	
-	// Test de la contrucció tauler a través de inserir barcos en varies posicions, invalides i correctes.
+	// Tests de la contrucció tauler a través de inserir barcos en varies posicions, invalides i correctes.
 	// Aquestes posicions les rep del Mock de ViewBoard, que simulen posibles inputs dels jugadors.
 	// Fa proves de caixa negra on es comprova:
 	//	- Partició Equivalent, valors límit.
 	// També realitza les proves de caixa blanca:
 	// 	- Statement coverage, decision coverage, condition coverage.
-	@Test
-	public void testBuildBoard() {
-		
+	//
+	// Aquest primer test simula una inserció de barcos totalment correcte.
+	@Test 
+	public void testBuildBoardCorrect() {
 		Boat[] boats = new Boat[3];
 		Boat b0 = new Boat(2);
 		boats[0] = b0; // position = A2 H
@@ -108,71 +109,81 @@ public class BoardTest {
 		assertEquals(board.getBoard()[5][7], Board.cell.boat); // H6
 		assertEquals(board.getBoard()[6][7], Board.cell.boat); // H7
 		assertEquals(board.getBoard()[7][7], Board.cell.boat); // H8
-		
+	}
+	
+	// Aquest test comprova que el tauler torni a demanar input si se li passa una posició invalida.
+	@Test
+	public void testBuildBoardInvalidPos() {
+		Boat[] boats = new Boat[1];
+		Boat b0 = new Boat(2);
+		boats[0] = b0; // position = A2 H
+		Board board = new Board();
+		board.setBoats(boats);
+		MockViewBoard mBoard = new MockViewBoard();
+		mBoard.numTest=1;
+		board.viewBoard = mBoard;
+		board.buildBoard();
+		assertEquals(board.getBoard()[1][0], Board.cell.boat); // A2
+		assertEquals(board.getBoard()[1][1], Board.cell.boat); // B2
 		ViewBoard sb = new ViewBoard();
 		sb.showBoardToPlayer(board);
-		
-		Boat[] boats4 = new Boat[1];
-		Boat b04 = new Boat(2);
-		boats4[0] = b04; // position = A2 H
-		Board board4 = new Board();
-		board4.setBoats(boats4);
-		MockViewBoard mBoard4 = new MockViewBoard();
-		mBoard4.numTest=1;
-		board4.viewBoard = mBoard4;
-		board4.buildBoard();
-		assertEquals(board4.getBoard()[1][0], Board.cell.boat); // A2
-		assertEquals(board4.getBoard()[1][1], Board.cell.boat); // B2
-		
-		ViewBoard sb4 = new ViewBoard();
-		sb4.showBoardToPlayer(board4);
-		
-		Boat[] boats1 = new Boat[1];
-		Boat b01 = new Boat(2);
-		boats1[0] = b01; // position = A2 H
-		Board board1 = new Board();
-		board1.setBoats(boats1);
-		MockViewBoard mBoard1 = new MockViewBoard();
-		mBoard1.numTest=2;
-		board1.viewBoard = mBoard1;
-		board1.buildBoard();
-		assertEquals(board1.getBoard()[1][0], Board.cell.boat); // A2
-		assertEquals(board1.getBoard()[2][0], Board.cell.boat); // A3
-		
-		ViewBoard sb1 = new ViewBoard();
-		sb1.showBoardToPlayer(board1);
+	}
+
+	// Aquest test comprova que el tauler torni a demanar input si se li passa una orientació invalida.
+	@Test
+	public void testBuildBoardInvalidOrientationV() {
+		Boat[] boats = new Boat[1];
+		Boat b0 = new Boat(2);
+		boats[0] = b0; // position = A2 H
+		Board board = new Board();
+		board.setBoats(boats);
+		MockViewBoard mBoard = new MockViewBoard();
+		mBoard.numTest=2;
+		board.viewBoard = mBoard;
+		board.buildBoard();
+		assertEquals(board.getBoard()[1][0], Board.cell.boat); // A2
+		assertEquals(board.getBoard()[2][0], Board.cell.boat); // A3
+		ViewBoard sb = new ViewBoard();
+		sb.showBoardToPlayer(board);
+	}
 	
-		
-		Boat[] boats2 = new Boat[1];
-		Boat b02 = new Boat(2);
-		boats2[0] = b02; // position = H8 V i després H7 V
-		Board board2 = new Board();
-		board2.setBoats(boats2);
-		MockViewBoard mBoard2 = new MockViewBoard();
-		mBoard2.numTest=3;
-		board2.viewBoard = mBoard2;
-		board2.buildBoard();
-		assertEquals(board2.getBoard()[6][7], Board.cell.boat); // H7
-		assertEquals(board2.getBoard()[7][7], Board.cell.boat); // H8
-		
-		ViewBoard sb2 = new ViewBoard();
-		sb2.showBoardToPlayer(board2);
-	
-		
-		Boat[] boats3 = new Boat[1];
-		Boat b03 = new Boat(2);
-		boats3[0] = b03; // position = H8 H i després G8 H
-		Board board3 = new Board();
-		board3.setBoats(boats3);
-		MockViewBoard mBoard3 = new MockViewBoard();
-		mBoard3.numTest=4;
-		board3.viewBoard = mBoard3;
-		board3.buildBoard();
-		assertEquals(board3.getBoard()[7][6], Board.cell.boat); // G8
-		assertEquals(board3.getBoard()[7][7], Board.cell.boat); // H8
-		
-		ViewBoard sb3 = new ViewBoard();
-		sb3.showBoardToPlayer(board3);
+	// Comprova que al indicar una posició que fa que el barco surti del numeró de files disponible, 
+	// es torni a demanar una altre posició.
+	@Test
+	public void testBuildBoardInvalidBoatVertical() {
+
+		Boat[] boats = new Boat[1];
+		Boat b0 = new Boat(2);
+		boats[0] = b0; // position = H8 V and later H7 V
+		Board board = new Board();
+		board.setBoats(boats);
+		MockViewBoard mBoard = new MockViewBoard();
+		mBoard.numTest=3;
+		board.viewBoard = mBoard;
+		board.buildBoard();
+		assertEquals(board.getBoard()[6][7], Board.cell.boat); // H7
+		assertEquals(board.getBoard()[7][7], Board.cell.boat); // H8
+		ViewBoard sb = new ViewBoard();
+		sb.showBoardToPlayer(board);
+	}
+
+	// Comprova que al indicar una posició que fa que el barco surti del numeró de columnes disponible, 
+	// es torni a demanar una altre posició.
+	@Test
+	public void testBuildBoardInvalidBoatHorizontal() {
+		Boat[] boats = new Boat[1];
+		Boat b0 = new Boat(2);
+		boats[0] = b0; // position = H8 H and later G8 H
+		Board board = new Board();
+		board.setBoats(boats);
+		MockViewBoard mBoard = new MockViewBoard();
+		mBoard.numTest=4;
+		board.viewBoard = mBoard;
+		board.buildBoard();
+		assertEquals(board.getBoard()[7][6], Board.cell.boat); // G8
+		assertEquals(board.getBoard()[7][7], Board.cell.boat); // H8
+		ViewBoard sb = new ViewBoard();
+		sb.showBoardToPlayer(board);
 	}
 	
 	// Test del moviment del jugador, fa diferents moviments vàlids i invalids sobre el tauler.
