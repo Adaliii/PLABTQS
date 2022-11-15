@@ -38,8 +38,10 @@ public class ControllerGame {
  	*/
 	public void setUpBoards() {
 		for (Player p: players) {
+			System.out.println("Jugador " + p.getName());
 			p.getBoard().buildBoard();
 			viewBoard.showBoardToPlayer(p.getBoard());
+			System.out.println("\n\n\n\n");
 		}
 	}
 	/**
@@ -54,7 +56,7 @@ public class ControllerGame {
 		while(!winner) {
 			actualPlayer = players[nextPlayer];
 			nextPlayer = (nextPlayer + 1) % 2;
-			
+			System.out.println("Jugador " + actualPlayer.getName());
 			boolean validMove = false;
 			while(!validMove) {
 				viewBoard.showBoardToEnemy(players[nextPlayer].getBoard());
@@ -64,6 +66,7 @@ public class ControllerGame {
 					validMove = true;
 				}
 			}
+			System.out.println("\n\n\n\n");
 			winner = players[nextPlayer].getBoard().checkWinner();
 		}
 		

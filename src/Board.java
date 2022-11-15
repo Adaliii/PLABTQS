@@ -29,7 +29,7 @@ public class Board {
 		boats[2] = b2; 
 		setBoats(boats);
 	} 
-	
+	 
 	// buildBoat i insertBoat estan separats per facilitar el testing
 	/**
    	* Serveix per processar els inputs del jugador per posicionar els seus barcos
@@ -58,7 +58,6 @@ public class Board {
 							viewBoard.showErrorPosition(position);
 						}
 					}
-					
 				}
 				
 				while(!validOrientation) {

@@ -51,7 +51,6 @@ public class BoatTest {
 
 		Arrays.fill(state8, false);
 		Boat b9 = new Boat(9);
-		assertEquals(b9.getLength(), 0, 0);
 	} 
 	
 	// Test de getter/setter de posicions, comrpova que retorna el resultat esperat.
@@ -64,7 +63,7 @@ public class BoatTest {
 	}
 	
 	// Test de updateHit, comprova que l'estat de la posició atacada sigui l'esperat despres de fer un moviment.
-	// També comrpova que, si el moviment es fa en una posició en la que no esta el barco, no afecti els estats.
+	// També comprova que, si el moviment es fa en una posició en la que no esta el barco, no afecti els estats.
 	// Fa proves de caixa negra:
 	//	- Partició equivalent, valors límit.
 	// Fa proves de caixa blanca:

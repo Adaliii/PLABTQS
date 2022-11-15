@@ -21,9 +21,9 @@ public class MockModelDatabase extends ModelDatabase {
 	@Override
 	public TreeMap<String, Integer> getRanking(){
 		TreeMap<String, Integer> mockRank = new TreeMap<String, Integer>();
-		if(name != null) {
-			mockRank.put(name, 1);
-		}
+		
+		mockRank.put(name, 1);
+		
 		return mockRank;
 	}
 }

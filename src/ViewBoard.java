@@ -45,7 +45,7 @@ public class ViewBoard{
 			}
 			System.out.println(); //Makes a new row
 		}
-	}
+	} 
 	
 	/**
 	 * Demana al jugador les posicions dels barcos.
