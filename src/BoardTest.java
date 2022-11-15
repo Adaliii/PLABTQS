@@ -131,7 +131,7 @@ public class BoardTest {
 
 	// Aquest test comprova que el tauler torni a demanar input si se li passa una orientació invalida.
 	@Test
-	public void testBuildBoardInvalidOrientationV() {
+	public void testBuildBoardInvalidOrientation() {
 		Boat[] boats = new Boat[1];
 		Boat b0 = new Boat(2);
 		boats[0] = b0; // position = A2 H
@@ -150,7 +150,7 @@ public class BoardTest {
 	// Comprova que al indicar una posició que fa que el barco surti del numeró de files disponible, 
 	// es torni a demanar una altre posició.
 	@Test
-	public void testBuildBoardInvalidBoatVertical() {
+	public void testBuildBoardInvalidBoatV() {
 
 		Boat[] boats = new Boat[1];
 		Boat b0 = new Boat(2);
@@ -170,7 +170,7 @@ public class BoardTest {
 	// Comprova que al indicar una posició que fa que el barco surti del numeró de columnes disponible, 
 	// es torni a demanar una altre posició.
 	@Test
-	public void testBuildBoardInvalidBoatHorizontal() {
+	public void testBuildBoardInvalidBoatH() {
 		Boat[] boats = new Boat[1];
 		Boat b0 = new Boat(2);
 		boats[0] = b0; // position = H8 H and later G8 H
